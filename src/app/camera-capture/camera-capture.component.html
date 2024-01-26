@@ -1,0 +1,13 @@
+<div class="camera-container">
+  <video #video autoplay playsinline></video>
+  <canvas #canvas></canvas>
+</div>
+
+<div class="detection-results">
+  <div class="detection-frame" *ngFor="let detection of detections">
+    <div class="detection-item">
+      <div class="class-name">{{ detection.class }}</div>
+      <div class="score">(Skor: {{ detection.score.toFixed(2) }})</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+/* Ana başlık */
+.display-2 {
+    font-size: 36px;
+    text-align: center;
+    color: #3498db; 
+}
+
+/* Ana başlık altı çizgi */
+.display-2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    border-bottom: 2px solid #3498db; 
+    margin: 10px auto;
+}
+
+/* Kart stil */
+.card {
+    background-color: #f8f9fa; 
+    margin-bottom: 20px;
+    border: none; 
+    border-radius: 10px; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Kart başlık stil */
+.card-header {
+    background-color: #3498db; 
+    color: #fff; 
+    font-size: 24px;
+    text-align: center;
+    border: none;
+    border-radius: 10px 10px 0 0; 
+}
+
+/* Liste stil */
+.list-group-item {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+}

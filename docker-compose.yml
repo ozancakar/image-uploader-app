@@ -1,0 +1,15 @@
+services:
+  image-uploader-app:
+    container_name: image-uploader-appcontainer
+    build: .
+    image: image-uploader-app:v1
+    ports:
+      - 80:80
+    expose:
+    - 80
+    networks:
+    - internalnet 
+
+networks:
+  internalnet:
+    driver: bridge

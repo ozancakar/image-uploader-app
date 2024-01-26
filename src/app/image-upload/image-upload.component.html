@@ -1,0 +1,39 @@
+<div class="mb-3">
+  <input type="file" (change)="onImageSelected($event)" accept="image/*" style="display: none;" #imageInput>
+  <button class="btn btn-file-upload btn-lg" style="cursor: pointer;" (click)="imageInput.click()">
+    <i class="fas fa-upload"></i> Resim Seç
+  </button>
+
+  <!-- Nesne tespiti başlatma düğmesi -->
+  <button *ngIf="selectedImage" (click)="startObjectDetection()" class="btn btn-start-detection btn-lg">
+    Tespit Başlat
+  </button>
+
+  <!-- Kamera uygulamasına git düğmesi -->
+  <a [routerLink]="['/camera']" class="btn btn-lg btn-primary" *ngIf="selectedImage">Kamera Uygulamasına Git</a>
+</div>
+
+<div class="image-container" *ngIf="selectedImage">
+  <div class="image-frame">
+    <img [src]="selectedImage" alt="Seçilen Resim" class="image img-fluid">
+  </div>
+  <canvas #canvas class="img-fluid"></canvas>
+</div>
+
+<!-- Yeni canvas alanı -->
+<canvas #detectionCanvas class="img-fluid"></canvas>
+
+<div *ngIf="detectionInProgress">
+  <p class="mt-3 detection-in-progress">
+    <i class="fas fa-circle-notch fa-spin"></i> Tespit Ediliyor...
+  </p>
+</div>
+
+<div class="detection-results" *ngIf="detectionResults && detectionResults.length > 0">
+  <h2>Tespit Edilen Nesneler</h2>
+  <ul class="list-group">
+    <li *ngFor="let result of detectionResults" class="list-group-item">
+      {{ result.class }} (Skor: {{ result.score.toFixed(2) }})
+    </li>
+  </ul>
+</div>
