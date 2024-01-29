@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         // Jenkins'te önceden tanımlanmış Docker Hub kimlik bilgileri ve Docker imaj adı
-        DOCKER_HUB_USER = credentials('DOCKER_HUB_USER')
-        DOCKER_HUB_PASSWORD = credentials('DOCKER_HUB_PASSWORD')
+        DOCKER_HUB_USER = credentials('ozanncakar')
+        DOCKER_HUB_PASSWORD = credentials('djHaydut123')
         DOCKER_IMAGE_NAME = 'ozanncakar/image-uploader-app'
     }
 
@@ -37,18 +37,5 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            script {
-                echo "Build başarıyla tamamlandı. Başka işlemler yapabilirsiniz."
-                // Başarı durumunda yapılacak işlemler
-            }
-        }
-        failure {
-            script {
-                echo "Build başarısız oldu. Başka işlemler yapabilirsiniz."
-                // Hata durumunda yapılacak işlemler
-            }
-        }
-    }
+
 }
