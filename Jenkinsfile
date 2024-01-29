@@ -1,38 +1,48 @@
 pipeline {
     agent any
 
+    environment {
+        // Jenkins'te önceden tanımlanmış Docker Hub kimlik bilgileri ve Docker imaj adı
+        DOCKER_HUB_USER = credentials('DOCKER_HUB_USER')
+        DOCKER_HUB_PASSWORD = credentials('DOCKER_HUB_PASSWORD')
+        DOCKER_IMAGE_NAME = 'ozanncakar/image-uploader-app'
+    }
+
     stages {
-        stage('Checkout SCM') {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build and Push Docker Image') {
             steps {
                 script {
-                    checkout scm
+                    // Docker imajını oluştur ve Docker Hub'a push et
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_USER, DOCKER_HUB_PASSWORD) {
+                        def customImage = docker.build("${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}")
+                        customImage.push()
+                    }
                 }
             }
         }
 
-        stage('Pull Docker Image') {
+        stage('Deploy') {
             steps {
                 script {
-                    // Buraya Docker imajını çekmek için kullanılacak komutu ekleyin
-                    // Örneğin: sh 'docker pull your-docker-image:tag'
-                }
-            }
-        }
-
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    // Buraya Docker konteynerını başlatmak için kullanılacak komutu ekleyin
-                    // Örneğin: sh 'docker run -d your-docker-image:tag'
+                    // Jenkins tarafından oluşturulan Docker imajını kullanarak uygulamayı deploy et
+                    docker.image("${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}").run('-p 8080:8080 -d')
                 }
             }
         }
     }
 
     post {
-        always {
-            // Her zaman çalışacak post işlemlerini buraya ekleyin
-            // Örneğin: sh 'docker stop your-container-id'
+        success {
+            // Başarı durumunda yapılacak işlemler
+        }
+        failure {
+            // Hata durumunda yapılacak işlemler
         }
     }
 }
