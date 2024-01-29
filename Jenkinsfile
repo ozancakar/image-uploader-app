@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Docker Hub'dan imajı çek
-                    docker.image(DOCKER_IMAGE_NAME).pull()
+                    docker.image("${DOCKER_IMAGE_NAME}:latest").pull()
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
         always {
             // İşlemler tamamlandığında temizlik yap
             script {
-                docker.image(DOCKER_IMAGE_NAME).remove()
+                docker.image("${DOCKER_IMAGE_NAME}:latest").remove()
                 docker.container('my-container').remove()
             }
         }
