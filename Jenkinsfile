@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Docker imajını başlat
-                    docker.container('my-container').withRun('-p ${HOST_PORT}:${CONTAINER_PORT}') {
+                    docker.container('my-container').withRun('-p ${HOST_PORT}:${CONTAINER_PORT} --name my-container') {
                         // İmaj başlatıldığında yapılacak adımlar
                         echo 'Container başlatıldı. Uygulamaya erişim sağlanabilir.'
                     }
@@ -35,6 +35,7 @@ pipeline {
             // İşlemler tamamlandığında temizlik yap
             script {
                 docker.image(DOCKER_IMAGE_NAME).remove()
+                docker.container('my-container').remove()
             }
         }
     }
