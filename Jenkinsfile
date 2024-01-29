@@ -39,10 +39,16 @@ pipeline {
 
     post {
         success {
-            // Başarı durumunda yapılacak işlemler
+            script {
+                echo "Build başarıyla tamamlandı. Başka işlemler yapabilirsiniz."
+                // Başarı durumunda yapılacak işlemler
+            }
         }
         failure {
-            // Hata durumunda yapılacak işlemler
+            script {
+                echo "Build başarısız oldu. Başka işlemler yapabilirsiniz."
+                // Hata durumunda yapılacak işlemler
+            }
         }
     }
 }
