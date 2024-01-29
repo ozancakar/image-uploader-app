@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_NAME = 'ozanncakar/image-uploader-app:latest'
+        DOCKER_IMAGE_NAME = 'ozanncakar/image-uploader-app'
         CONTAINER_PORT = 8080
         HOST_PORT = 8080
     }
