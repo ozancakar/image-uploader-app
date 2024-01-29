@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         // Jenkins'te önceden tanımlanmış Docker Hub kimlik bilgileri ve Docker imaj adı
-        DOCKER_HUB_USER = credentials('ozanncakar')
-        DOCKER_HUB_PASSWORD = credentials('djHaydut123')
+        DOCKER_HUB_USER = credentials('DOCKER_HUB_USER')
+        DOCKER_HUB_PASSWORD = credentials('DOCKER_HUB_PASSWORD')
         DOCKER_IMAGE_NAME = 'ozanncakar/image-uploader-app'
     }
 
