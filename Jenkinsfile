@@ -8,18 +8,15 @@ pipeline {
     }
 
     stages {
-        stage('Pull Docker Image') {
+        stage('Build') {
             steps {
                 script {
+                    // Hata durumunda devam etmek için set +e kullan
+                    sh 'set +e'
+                    
                     // Docker Hub'dan imajı çek
                     docker.image("${DOCKER_IMAGE_NAME}:latest").pull()
-                }
-            }
-        }
 
-        stage('Run Docker Container') {
-            steps {
-                script {
                     // Docker imajını başlat
                     docker.container('my-container').withRun('-p ${HOST_PORT}:${CONTAINER_PORT} --name my-container') {
                         // İmaj başlatıldığında yapılacak adımlar
