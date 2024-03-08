@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:34a74e78333e491611294efdbb4319db33d6af25fd179efb3c0973e6de48ba90
-size 1070
+# Image Uploader Uygulaması
+
+Bu uygulama, kullanıcıların resimlerini yükleyip görüntüleyebilecekleri bir web uygulamasıdır. Angular mimarisini kullanarak tasarlanmıştır. Projenin HTML ve CSS kısımları, yapay zekanın dünyasına dalmış olmaktan dolayı öncelik verilmemiş ve basit tutulmuştur.
+
+## Özellikler
+
+- Kullanıcı dostu arayüz: Angular ile geliştirilmiş, kullanıcıların kolayca gezinip resim yüklemelerine olanak tanır.
+- Resim yükleme: Kullanıcılar resimlerini yükleyebilir ve platformda paylaşabilir.
+- Resim görüntüleme: Kullanıcılar yüklenen resimleri büyük boyutta görüntüleyebilir.
+- Docker Image: Projeyi Docker ile paketleyerek [Docker Hub](https://hub.docker.com/r/ozanncakar/image-uploader-app) üzerindeki Docker Imageni yayınladım.
+- TensorFlow.js: Projede yapay zeka özellikleri eklemek için TensorFlow.js kullanılmıştır.
+
+## Gerekli Kütüphaneler
+
+Projeyi çalıştırabilmek için aşağıdaki kütüphanelerin kurulu olması gerekmektedir:
+
+- Node.js
+- npm veya yarn
+- TensorFlow.js
+
+## Kurulum
+
+1. Bu reposu klonlayın:
+   ```bash
+   git clone https://github.com/ozancakar/image-uploader-app.git
