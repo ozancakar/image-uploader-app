@@ -1,6 +1,8 @@
 # Image Uploader Uygulaması
 
 Bu uygulama, kullanıcıların resimlerini yükleyip görüntüleyebilecekleri bir web uygulamasıdır. Angular mimarisini kullanarak tasarlanmıştır. Projenin HTML ve CSS kısımları, yapay zekanın dünyasına dalmış olmaktan dolayı öncelik verilmemiş ve basit tutulmuştur.
+Uygulama kullanım için estetik değildir ancak yapay zeka eğitimi ve kullanımı konusunda bana katkı sağlayacağını düşündüğüm için öğrenim amacıyla yapılmaya özen gösterilmiştir.
+
 
 ## Özellikler
 
